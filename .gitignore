@@ -1,1 +1,19 @@
-*.pdf
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+
+# Local build outputs
+/slide.pdf
+/slide.dvi
+/slide.ps

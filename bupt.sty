@@ -8,6 +8,16 @@
 
 \useoutertheme[footline=authorinstitutetitle,subsection=false]{smoothbars}
 \makeatletter % [add curpage/total page at the bottom](http://tex.stackexchange.com/questions/100838/beamer-dresden-theme-miniframes-appeareance-and-frame-number-insertion)
+% TeX Live 2022 的 PGF dvipdfmx 驱动中，遮罩缓存的 \let 展开顺序有误。
+% 只在 XeTeX 下匹配并修补原语句；保留顶栏/标题的渐变与阴影。
+\ifdefined\XeTeXversion
+  \patchcmd{\pgf@sys@pdf@install@mask}
+    {\expandafter\let\csname pgfsmask@#1\endcsname\expandafter\csname pgfsmaskxform@#1\endcsname}
+    {\expandafter\let\csname pgfsmask@#1\expandafter\endcsname\csname pgfsmaskxform@#1\endcsname}
+    {\PackageInfo{bupt}{Applied PGF dvipdfmx fading-cache fix}}
+    {\PackageInfo{bupt}{PGF fading-cache fix not needed}}
+\fi
+
 \newcommand{\frameofframes}{/}
 \newcommand{\setframeofframes}[1]{\renewcommand{\frameofframes}{#1}}
 \setbeamertemplate{footline} 
@@ -36,10 +46,10 @@
 %\useoutertheme{default}
 %\useinnertheme[shadow=true]{rounded}
 
-\xdefinecolor{tsinghua}{rgb}{0.455,0.204,0.506}  %RGB#82318E
-\setbeamercolor{footline}{bg=tsinghua}
-\setbeamercolor{frametitle}{bg=tsinghua,fg=white}
-\setbeamercolor{title}{bg=tsinghua}
+\definecolor{bupt}{HTML}{003399}  %RGB#82318E
+\setbeamercolor{footline}{bg=bupt}
+\setbeamercolor{frametitle}{bg=bupt,fg=white}
+\setbeamercolor{title}{bg=bupt}
 \setbeamerfont{frametitle}{size=\large}
 %\setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{bibliography item}[text]
@@ -53,8 +63,8 @@
 \setbeamercolor{titlelike}{parent=palette primary}
 
 %% try
-\setbeamercolor{block title}{bg=tsinghua,fg=white}
-\setbeamercolor*{block title example}{use={normal text,example text},bg=white,fg=tsinghua}
+\setbeamercolor{block title}{bg=bupt,fg=white}
+\setbeamercolor*{block title example}{use={normal text,example text},bg=white,fg=bupt}
 \setbeamercolor{fine separation line}{}
 \setbeamercolor{item projected}{fg=white}
 \setbeamercolor{palette sidebar primary}{use=normal text,fg=normal text.fg}
@@ -65,9 +75,9 @@
 \setbeamercolor{section in sidebar}{fg=brown}
 \setbeamercolor{section in sidebar shaded}{fg=grey}
 \setbeamercolor{separation line}{}
-\setbeamercolor{sidebar}{bg=tsinghua}
+\setbeamercolor{sidebar}{bg=bupt}
 \setbeamercolor{sidebar}{parent=palette primary}
-\setbeamercolor{structure}{fg=tsinghua}
+\setbeamercolor{structure}{fg=bupt}
 \setbeamercolor{subsection in sidebar}{fg=brown}
 \setbeamercolor{subsection in sidebar shaded}{fg=grey}
 \AtBeginSection[]{

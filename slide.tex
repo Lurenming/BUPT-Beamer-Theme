@@ -6,12 +6,12 @@
 \usepackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra}
 \usepackage{graphicx,pstricks,listings,stackengine}
 
-\author{翁家翌}
-\title{THU Beamer Theme}
+\author{你的名字}
+\title{BUPT Beamer Theme}
 \subtitle{毕业设计开题报告}
-\institute{清华大学计算机科学与技术系}
-\date{2020年1月2日}
-\usepackage{Tsinghua}
+\institute{北京邮电大学计算机科学与技术专业}
+\date{2026年10月23日}
+\usepackage{bupt}
 
 % defs
 \def\cmd#1{\texttt{\color{red}\footnotesize $\backslash$#1}}
@@ -40,7 +40,7 @@
     \titlepage
     \begin{figure}[htpb]
         \begin{center}
-            \includegraphics[width=0.2\linewidth]{pic/Tsinghua_University_Logo.eps}
+            \includegraphics[width=0.2\linewidth]{pic/BUPT_logo.png}
         \end{center}
     \end{figure}
 \end{frame}
@@ -56,8 +56,8 @@
     \begin{itemize}[<+-| alert@+>] % 当然，除了alert，手动在里面插 \pause 也行
         \item 大家都会\LaTeX{}，好多学校都有自己的Beamer主题
         \item 中文支持请选择 Xe\LaTeX{} 编译选项
-        \item Overleaf项目地址位于 \url{https://www.overleaf.com/latex/templates/thu-beamer-theme/vwnqmzndvwyb}，可以直接使用
-        \item GitHub项目地址位于 \url{https://github.com/Trinkle23897/THU-Beamer-Theme}，如果有bug或者feature request可以去里面提issue
+        % \item Overleaf项目地址位于 \url{https://www.overleaf.com/latex/templates/thu-beamer-theme/vwnqmzndvwyb}，可以直接使用
+        \item GitHub项目地址位于 \url{https://github.com/Lurenming/BUPT-Beamer-Theme}，如果有bug或者feature request可以去里面提issue
     \end{itemize}
 \end{frame}
 
@@ -71,8 +71,9 @@
         \item 有一些 \LaTeX{} 自带的
         \item 有一些Tsinghua的
         \item 本模板来源自 \newline \url{https://www.latexstudio.net/archives/4051.html}
-        \item 但是最初的 \href{http://far.tooold.cn/post/latex/beamertsinghua}{\color{purple}{link}} \cite{origin}已经失效了
-        \item 这是我在16-17年做的一些ppt：\href{https://github.com/Trinkle23897/oi_slides}{\color{purple}{戳我}}
+        \item 参考项目：\href{https://github.com/tuna/THU-Beamer-Theme}{\color{purple}THU Beamer Theme}~\cite{thu-theme}
+        \item 其他参考项目：\href{https://github.com/inFaaa/PKU-Beamer-Theme}{\color{red}PKU Beamer Theme}~\cite{pku-theme}
+        \item 这是清华模板作者n+e大佬做的一些ppt：\href{https://github.com/Trinkle23897/oi_slides}{\color{purple}{戳我}}
     \end{itemize}
 \end{frame}
 
@@ -81,11 +82,11 @@
 
 \subsection{美化主题}
 
-\begin{frame}{这一份主题与原始的THU Beamer Theme区别在于}
+\begin{frame}{主题与版式}
     \begin{itemize}
-        \item 顶栏的小点变成一行而不是多行
-        \item 中文采用楷书
-        \item 剩下我改了啥我也忘了……我16年魔改的，都四年过去了（x
+        \item 顶栏显示章节名称，顶栏有一行小点标注ppt进度
+        \item 中文采用楷书，保留北邮蓝作为主题色
+        \item 默认使用 16:9 宽屏，仅在大章节切换时显示过渡页
         \item 更多该模板的功能可以参考 \url{https://www.latexstudio.net/archives/4051.html}
         \item 下面列举出了一些Beamer的用法，部分节选自 \url{https://tuna.moe/event/2018/latex/}
     \end{itemize}
@@ -146,7 +147,8 @@
 
 \begin{frame}{图形与分栏}
     % From thuthesis user guide.
-    \begin{minipage}[c]{0.3\linewidth}
+    % 原图宽 4cm；左栏需要足够宽，避免图形伸出分栏。
+    \begin{minipage}[c]{0.42\linewidth}
         \psset{unit=0.8cm}
         \begin{pspicture}(-1.75,-3)(3.25,4)
             \psline[linewidth=0.25pt](0,0)(0,4)
@@ -169,7 +171,7 @@
             \psarc{->}{2.1}{90}{112.5}
             \rput[bl](.1,.01){C}
         \end{pspicture}
-    \end{minipage}\hspace{1cm}
+    \end{minipage}\hfill
     \begin{minipage}{0.5\linewidth}
         \medskip
         %\hspace{2cm}
@@ -237,7 +239,7 @@
   \item 巨佬 \item 大佬
   \item 萌新
   \begin{itemize}
-    \item[n+e] 瑟瑟发抖
+    \item[lrm] 瑟瑟发抖
   \end{itemize}
 \end{enumerate}
 \end{lstlisting}
@@ -248,7 +250,7 @@
             \item 大佬
             \item 萌新
             \begin{itemize}
-                \item[n+e] 瑟瑟发抖
+                \item[lrm] 瑟瑟发抖
             \end{itemize}
         \end{enumerate}
     \end{minipage}
@@ -289,7 +291,9 @@ $V = \frac{4}{3}\pi r^3$
 \begin{frame}[fragile]
     \begin{columns}
         \column{.6\textwidth}
-\begin{lstlisting}[language=TeX]
+\begin{lstlisting}[language=TeX,basicstyle=\ttfamily\footnotesize,
+    gobble=4,xleftmargin=1.5em,numbersep=4pt,
+    numberstyle=\footnotesize\color{halfgray}]
     \begin{table}[htbp]
       \caption{编号与含义}
       \label{tab:number}
@@ -338,8 +342,8 @@ $V = \frac{4}{3}\pi r^3$
     \end{itemize}
     \begin{figure}[htpb]
         \centering
-        \includegraphics[width=0.2\linewidth]{pic/Tsinghua_University_Logo.eps}
-        \caption{这个校徽就是矢量图}
+        \includegraphics[width=0.2\linewidth]{pic/BUPT_logo.png}
+        \caption{北京邮电大学校徽}
     \end{figure}
 \end{frame}
 
@@ -349,7 +353,7 @@ $V = \frac{4}{3}\pi r^3$
     \begin{itemize}
         \item 一月：完成文献调研
         \item 二月：复现并评测各种Beamer主题美观程度
-        \item 三、四月：美化THU Beamer主题
+        \item 三、四月：美化BUPT Beamer主题
         \item 五月：论文撰写
     \end{itemize}
 \end{frame}
@@ -358,8 +362,8 @@ $V = \frac{4}{3}\pi r^3$
 \section{参考文献}
 
 \begin{frame}[allowframebreaks]
+    \bibliographystyle{unsrt}
     \bibliography{ref}
-    \bibliographystyle{alpha}
     % 如果参考文献太多的话，可以像下面这样调整字体：
     % \tiny\bibliographystyle{alpha}
 \end{frame}
